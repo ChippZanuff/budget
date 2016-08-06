@@ -7,7 +7,7 @@ public class Category
     private Integer id;
     private String name = "";
 
-    public Category(Integer id,String name,String created,String updated)
+    public Category (Integer id, String name, String created, String updated)
     {
         this.id = id;
         this.name = name;
@@ -15,32 +15,32 @@ public class Category
         this.updated = updated;
     }
 
-    public Integer getId()
+    public Integer getId ()
     {
         return this.id;
     }
 
-    public Integer setId(Integer id)
+    public Integer setId (Integer id)
     {
         return this.id = id;
     }
 
-    public String getName()
+    public String getName ()
     {
         return this.name;
     }
 
-    public void setName(String name)
+    public void setName (String name)
     {
         this.name = name;
     }
 
-    public String getCreated()
+    public String getCreated ()
     {
         return this.created;
     }
 
-    public String getUpdated()
+    public String getUpdated ()
     {
         return this.updated;
     }

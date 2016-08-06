@@ -1,4 +1,4 @@
 .idea
 target
 BudgetApp.iml
-main\java\Main.java
+src\main\java\Main.java

@@ -4,13 +4,13 @@ import java.util.List;
 
 public interface CategoryDAO
 {
-    void create(String name);
+    void create (String name);
 
-    void delete(Integer integer);
+    void delete (Integer integer);
 
-    Category getCategory(Integer integer);
+    Category getCategory (Integer integer);
 
-    List<Category> listCategories();
+    List<Category> listCategories ();
 
-    void update(String name,Integer integer);
+    void update (String name, Integer integer);
 }

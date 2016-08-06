@@ -26,7 +26,7 @@ public class CategoryJDBCTemplate implements CategoryDAO
 
     public final void delete(final Integer integer)
     {
-        final String sql = "delete from categories where id > ?";
+        final String sql = "delete from categories where id = ?";
 
         this.jdbcTemplateObject.update(sql, integer);
     }
@@ -40,7 +40,7 @@ public class CategoryJDBCTemplate implements CategoryDAO
 
     public final List listCategories()
     {
-        final String sql = "select * from categories";
+        final String sql = "select * from 'categories'";
 
         return this.jdbcTemplateObject.query(sql, new CategoryMapper());
     }
