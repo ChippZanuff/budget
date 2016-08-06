@@ -6,13 +6,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 
-public class CategoryJDBCTemplate implements CategoryDAO
+public class CategoryRepository implements Repository
 {
-    private final JdbcTemplate jdbcTemplateObject;
+    private final JdbcTemplate template;
 
-    public CategoryJDBCTemplate(final JdbcTemplate template)
+    public CategoryRepository (final JdbcTemplate template)
     {
-        this.jdbcTemplateObject = template;
+        this.template = template;
     }
 
     public final void create(final String name)
@@ -21,37 +21,37 @@ public class CategoryJDBCTemplate implements CategoryDAO
 
         final String sql = "insert into categories (name, created, updated) values (?, ?, ?)";
 
-        this.jdbcTemplateObject.update(sql, name, date, date);
+        this.template.update(sql, name, date, date);
     }
 
-    public final void delete(final Integer integer)
+    public final void delete(final Integer id)
     {
         final String sql = "delete from categories where id = ?";
 
-        this.jdbcTemplateObject.update(sql, integer);
+        this.template.update(sql, id);
     }
 
-    public final Category getCategory(final Integer integer)
+    public final Category findById(final Integer id)
     {
         final String sql = "select * from categories where id = ?";
 
-        return (Category) this.jdbcTemplateObject.queryForObject(sql, new Object[]{integer}, new CategoryMapper());
+        return (Category) this.template.queryForObject(sql, new Object[]{id}, new CategoryMapper());
     }
 
-    public final List listCategories()
+    public final List findAll()
     {
         final String sql = "select * from 'categories'";
 
-        return this.jdbcTemplateObject.query(sql, new CategoryMapper());
+        return this.template.query(sql, new CategoryMapper());
     }
 
-    public void update(final String name,final Integer integer)
+    public void update(final String name,final Integer id)
     {
         final String date = DateTimeFormat.forPattern("yyyy-MM-dd hh:mm:ss").print(new DateTime());
 
         final String sql = "update categories set name = ?, updated = ? where id = ?";
 
-        this.jdbcTemplateObject.update(sql, name, date, integer);
+        this.template.update(sql, name, date, id);
 
     }
 }
