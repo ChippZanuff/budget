@@ -1,12 +1,13 @@
-package category;
+package com.homeprojects.category;
 
+import com.homeprojects.Repository;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 
-public class CategoryRepository implements Repository
+public class CategoryRepository implements Repository<Category>
 {
     private final JdbcTemplate template;
 
@@ -31,7 +32,7 @@ public class CategoryRepository implements Repository
         this.template.update(sql, id);
     }
 
-    public final Category findById(final Integer id)
+    public Category findById(final Integer id)
     {
         final String sql = "select * from categories where id = ?";
 

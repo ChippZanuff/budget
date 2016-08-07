@@ -1,4 +1,4 @@
-package category;
+package com.homeprojects.category;
 
 import org.springframework.jdbc.core.RowMapper;
 

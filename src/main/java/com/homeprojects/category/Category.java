@@ -1,4 +1,4 @@
-package category;
+package com.homeprojects.category;
 
 public class Category
 {
