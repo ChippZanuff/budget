@@ -15,7 +15,7 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
 
-    <bean id="CategoryJDBCTemplate" class="com.homeprojects.category.CategoryRepository">
+    <bean id="CategoryRepository" class="com.homeprojects.category.CategoryRepository">
         <constructor-arg ref ="jdbcTemplate" />
     </bean>
 </beans>

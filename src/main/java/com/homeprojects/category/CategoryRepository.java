@@ -18,11 +18,9 @@ public class CategoryRepository implements Repository<Category>
 
     public final void create(final String name)
     {
-        final String date = DateTimeFormat.forPattern("yyyy-MM-dd hh:mm:ss").print(new DateTime());
+        final String sql = "insert into categories (name, created, updated) values (?, current_timestamp, current_timestamp)";
 
-        final String sql = "insert into categories (name, created, updated) values (?, ?, ?)";
-
-        this.template.update(sql, name, date, date);
+        this.template.update(sql, name);
     }
 
     public final void delete(final Integer id)
@@ -48,11 +46,9 @@ public class CategoryRepository implements Repository<Category>
 
     public void update(final String name,final Integer id)
     {
-        final String date = DateTimeFormat.forPattern("yyyy-MM-dd hh:mm:ss").print(new DateTime());
+        final String sql = "update categories set name = ?, updated = current_timestamp where id = ?";
 
-        final String sql = "update categories set name = ?, updated = ? where id = ?";
-
-        this.template.update(sql, name, date, id);
+        this.template.update(sql, name, id);
 
     }
 }
