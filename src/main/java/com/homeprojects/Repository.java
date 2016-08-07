@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface Repository <T>
 {
-    void create (String name);
+    void create (T object);
 
     void delete (Integer id);
 
@@ -12,5 +12,5 @@ public interface Repository <T>
 
     List<T> findAll ();
 
-    void update (String name, Integer id);
+    void update (T object);
 }

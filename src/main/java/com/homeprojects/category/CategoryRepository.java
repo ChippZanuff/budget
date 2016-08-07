@@ -16,11 +16,11 @@ public class CategoryRepository implements Repository<Category>
         this.template = template;
     }
 
-    public final void create(final String name)
+    public final void create(Category category)
     {
         final String sql = "insert into categories (name, created, updated) values (?, datetime(datetime(), 'localtime'), datetime(datetime(), 'localtime'))";
 
-        this.template.update(sql, name);
+        this.template.update(sql, category.getName());
     }
 
     public final void delete(final Integer id)
@@ -44,11 +44,10 @@ public class CategoryRepository implements Repository<Category>
         return this.template.query(sql, new CategoryMapper());
     }
 
-    public void update(final String name,final Integer id)
+    public void update(Category category)
     {
         final String sql = "update categories set name = ?, updated = datetime(datetime(), 'localtime') where id = ?";
 
-        this.template.update(sql, name, id);
-
+        this.template.update(sql, category.getName(), category.getId());
     }
 }
