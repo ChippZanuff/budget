@@ -18,7 +18,7 @@ public class CategoryRepository implements Repository<Category>
 
     public final void create(final String name)
     {
-        final String sql = "insert into categories (name, created, updated) values (?, current_timestamp, current_timestamp)";
+        final String sql = "insert into categories (name, created, updated) values (?, datetime(datetime(), 'localtime'), datetime(datetime(), 'localtime'))";
 
         this.template.update(sql, name);
     }
@@ -46,7 +46,7 @@ public class CategoryRepository implements Repository<Category>
 
     public void update(final String name,final Integer id)
     {
-        final String sql = "update categories set name = ?, updated = current_timestamp where id = ?";
+        final String sql = "update categories set name = ?, updated = datetime(datetime(), 'localtime') where id = ?";
 
         this.template.update(sql, name, id);
 
